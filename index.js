@@ -114,3 +114,52 @@ function gameObject() {
         },
     };
 }
+
+function numPointsScored(playerName) {
+    const game = gameObject()
+    for (let team in game){
+        const players = game[team].players;
+        if (players[playerName]) {
+            return players[playerName].points
+        }
+    }
+    return null
+}
+
+function shoeSize(playerName) {
+    const game = gameObject()
+    for (let team in game){
+        const players = game[team].players;
+        if (players[playerName]) {
+            return players[playerName].shoe
+        }
+    }
+    return null
+}
+
+function teamColors(teamName) {
+    const game = gameObject()
+    for (let team in game){
+        if (game[team].teamName === teamName){
+            return game[team].colors
+        }
+    }
+}
+
+function teamNames() {
+    const game = gameObject()
+    return [game.home.teamName, game.away.teamName]
+}
+
+function playerNumbers(teamName) {
+    const game = gameObject()
+    for (let team in game){
+        const players = game[team].players;
+        if (game[team] === teamName){
+            players.filter(playerNumbers => game[team].teamName === teamName)
+        }
+    }
+}
+
+//playerStats(playerName)
+
