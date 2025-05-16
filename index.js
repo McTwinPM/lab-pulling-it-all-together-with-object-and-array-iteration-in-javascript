@@ -153,13 +153,25 @@ function teamNames() {
 
 function playerNumbers(teamName) {
     const game = gameObject()
-    for (let team in game){
-        const players = game[team].players;
-        if (game[team] === teamName){
-            players.filter(playerNumbers => game[team].teamName === teamName)
+    for (let team in game) {
+        if (game[team].teamName === teamName){
+            const players = game[team].players;
+            return players.map(player => player.number)
         }
     }
 }
 
-//playerStats(playerName)
+function playerStats(playerName) {
+    const game = gameObject()
+    for (let team in game) {
+        const players = game[team].players;
+        if (players[playerName]){
+            return players[playerName]
+        }
+    }
+}
 
+function bigShoeRebound() {
+    const game = gameObject()
+    
+}
