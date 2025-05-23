@@ -153,12 +153,14 @@ function teamNames() {
 
 function playerNumbers(teamName) {
     const game = gameObject()
+    let playerNumbers = []
     for (let team in game) {
         if (game[team].teamName === teamName){
-            const players = game[team].players;
-            return players.map(player => player.number)
+            const numbers = Object.values(game[team].players).map(player => player.number)
+            playerNumbers = playerNumbers.concat(numbers)
         }
     }
+    return playerNumbers
 }
 
 function playerStats(playerName) {
@@ -171,7 +173,20 @@ function playerStats(playerName) {
     }
 }
 
-function bigShoeRebound() {
-    const game = gameObject()
-    
+function bigShoeRebounds() {
+    const game = gameObject();
+    let maxShoe = 0;
+    let rebounds = 0;
+    for (let team in game) {
+        const players = game[team].players;
+        for (let player in players) {
+            if (players[player].shoe > maxShoe) {
+                maxShoe = players[player].shoe;
+                rebounds = players[player].rebounds;
+            }
+        }
+    }
+
+    return rebounds;
 }
+
